@@ -25,11 +25,24 @@ final GlobalKey skillsKey=GlobalKey();
 final GlobalKey projectsKey=GlobalKey();
 final GlobalKey contactsKey=GlobalKey();
 
+// Contacts link
 final Uri githubUrl =Uri.parse('https://github.com/Prasannata1Baniya');
 final Uri instaUrl=Uri.parse('');
 final Uri linkedInUrl=Uri.parse('https://www.linkedin.com/in/prasannata-baniya-060b792bb');
 
+//for projects
+final Uri flutterProjects=Uri.parse('https://github.com/Prasannata1Baniya/flutter_projects');
+final Uri projectsUrl =Uri.parse('https://github.com/Prasannata1Baniya');
+
 class _PortfolioPageState extends State<PortfolioPage> {
+  Future<void> projectUrl(Uri url) async{
+    if(await canLaunchUrl(url)){
+      await launchUrl(url);
+    }
+    else{
+      throw 'Could not launch $url';
+    }
+  }
   Future<void> _launchUrl(Uri url) async{
     if(await canLaunchUrl(url)){
       await launchUrl(url);
@@ -112,7 +125,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                             scrollToSection(projectsKey);
                             break;
                           case 3:
-                            break;// Skip index 3 if no corresponding section break
+                            break;
                           case 4:
                             scrollToSection(contactsKey);
                             break;
@@ -131,7 +144,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          mainColumn(homeKey),
+                          mainColumn(homeKey,()=>_launchUrl(githubUrl)),
                           deviceFrame(),
                         ],
                       )
@@ -141,7 +154,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
                       Column(
                         children: [
                           deviceFrame(),
-                          mainColumn(homeKey),
+                          mainColumn(homeKey,()=>_launchUrl(githubUrl)),
                         ],
                       ),
                     const SizedBox(height: 12.0),
@@ -153,9 +166,9 @@ class _PortfolioPageState extends State<PortfolioPage> {
 
                     //projects
                     if(constraints.maxWidth>=minSize)
-                      projectContainer(projectsKey,500,110)
+                      projectContainer(()=>projectUrl(flutterProjects),projectsKey,500,110)
                     else
-                      projectContainer(projectsKey,600,155),
+                      projectContainer(()=>projectUrl(projectsUrl),projectsKey,600,155),
             
                     //Contacts
                     Container(
@@ -170,7 +183,8 @@ class _PortfolioPageState extends State<PortfolioPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              containerForContacts(GoogleIcon.icons['Github']!,()=>_launchUrl(githubUrl)),
+                              containerForContacts(GoogleIcon.icons['Github']!,
+                                      ()=>_launchUrl(githubUrl)),
                               containerForContacts(GoogleIcon.icons['Instagram']!,()=>_launchUrl(instaUrl)),
                               containerForContacts(GoogleIcon.icons['LinkedIn']!,()=>_launchUrl(linkedInUrl)),
                             ],

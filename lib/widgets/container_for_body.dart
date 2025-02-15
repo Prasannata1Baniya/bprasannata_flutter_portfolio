@@ -35,79 +35,6 @@ Container deviceFrame() {
   );
 }
 
-//for Skills
-/*class SkillsForContainer extends StatefulWidget {
-
-  final GlobalKey skillKey;
- final double width;
-     final double fontSize;
-  const SkillsForContainer({super.key, required this.skillKey,
-    required this.width, required this.fontSize});
-
-  @override
-  State<SkillsForContainer> createState() => _SkillsForContainerState();
-}
-
-class _SkillsForContainerState extends State<SkillsForContainer> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      key:widget.skillKey,
-      width: double.maxFinite,
-      height: 500,
-      color: const Color(0xff141414),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text("Skills",style: Poppins.googleFontPoppin,),
-          const SizedBox(height: 30),
-          Container(
-            padding: const EdgeInsets.only(top: 30.0),
-            height: 350,
-            width: widget.width,
-            //width: 900,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              color: Colors.deepOrange.shade400,
-            ),
-            child: Column(
-              children: [
-                CircularPercentIndicator(
-                  radius: 50,
-                  lineWidth: 5,
-                  percent: 0.8,
-                  center: const Text("80%", style: TextStyle(color: Colors.white)),
-                  progressColor: Colors.green,
-                ),
-                const SizedBox(height: 15,),
-                SingleChildScrollView(
-                  scrollDirection:Axis.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      containerForSkills("Dart", "assets/skills-image/dart.png",
-                          widget.fontSize),
-                      containerForSkills(
-                          "Flutter", "assets/skills-image/flutter.png",widget.fontSize),
-                      containerForSkills(
-                          "Firebase", "assets/skills-image/firebase.png",widget.fontSize),
-                      containerForSkills("Bloc", "assets/skills-image/bloc.png",widget.fontSize),
-                      containerForSkills(
-                          "Hive Storage", "assets/skills-image/hive.png",widget.fontSize),
-                    ],
-                  ),
-                ),
-
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}*/
-
 Container skillsContainer(GlobalKey key,double width,double fontSize) {
   return Container(
     key:key,
@@ -125,13 +52,18 @@ Container skillsContainer(GlobalKey key,double width,double fontSize) {
           width: width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: Colors.deepOrange,
-            boxShadow: [
+            color: Colors.black,
+           boxShadow:[
               BoxShadow(
-                offset: const Offset(0, 3),
+                offset:const Offset(0, 3),
                 spreadRadius: 3,
-                color: Colors.deepOrange.shade300,
+                color: Colors.grey.shade600,
               ),
+             BoxShadow(
+               offset:const Offset(0,-3),
+               spreadRadius: 3,
+               color: Colors.grey.shade600,
+             ),
             ],
           ),
           child: Column(
@@ -150,11 +82,15 @@ Container skillsContainer(GlobalKey key,double width,double fontSize) {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
                     containerForSkills("Dart", "assets/skills-image/dart.png",fontSize),
+                    const SizedBox(width:7),
                     containerForSkills(
                         "Flutter", "assets/skills-image/flutter.png",fontSize),
+                    const SizedBox(width:7),
                     containerForSkills(
                         "Firebase", "assets/skills-image/firebase.png",fontSize),
+                    const SizedBox(width:7),
                     containerForSkills("Bloc", "assets/skills-image/bloc.png",fontSize),
+                    const SizedBox(width:7),
                     containerForSkills(
                         "Hive Storage", "assets/skills-image/hive.png",fontSize),
                   ],
@@ -169,7 +105,7 @@ Container skillsContainer(GlobalKey key,double width,double fontSize) {
 }
 
 //for projects
-Container projectContainer(GlobalKey key,double ht,double height) {
+Container projectContainer(void Function() onTap,GlobalKey key,double ht,double height) {
   return Container(
     key: key,
     width: double.maxFinite,
@@ -182,14 +118,17 @@ Container projectContainer(GlobalKey key,double ht,double height) {
           Text("Projects",style: Poppins.googleFontPoppin,),
           const SizedBox(height: 12),
           containerForProjects(
+            onTap,
               "Basics Projects",
               "Basics Project to enhance my dart and flutter knowledge.\n Simple games, simple demo apps, other small projects are included.",
               "assets/projects-image/basics_project.png",height),
           containerForProjects(
+              onTap,
               "E-Learning app",
               "E-Learning app with various features...",
               "assets/projects-image/e-learning.png",height),
           containerForProjects(
+              onTap,
               "Advanced Projects",
               "Advanced projects using flutter hive_storage, State Management System-Bloc, REST APIs, Firebase etc.",
               "assets/projects-image/advanced_project.png",height),
@@ -198,19 +137,21 @@ Container projectContainer(GlobalKey key,double ht,double height) {
 }
 
 //for main page
-Column mainColumn(GlobalKey key) {
+Column mainColumn(GlobalKey key,void Function() onTap) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.center,
     key:key,
     children: [
-       const  Text(
-        ' Hi, I am Prasannata Baniya',
+      const Text(
+        ' Hello!',
         style: TextStyle(
             fontSize: 30, fontWeight: FontWeight.normal, color: Colors.yellow),
-        ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-           .fadeOut(curve: Curves.easeInOut),
-           ///.scale(duration:const Duration(seconds: 2))
-           ///.fadeIn(),
+         ),
+       const  Text(
+        'I am Prasannata Baniya',
+        style: TextStyle(
+            fontSize: 30, fontWeight: FontWeight.normal, color: Colors.yellow),
+        ),
       Text(
         "Flutter App Developer ",
         style: Abeezee.googleFont,
@@ -250,6 +191,10 @@ Column mainColumn(GlobalKey key) {
           size: 30,
         ),
       ]),
+      OutlinedButton(
+          onPressed:onTap,
+          style:ButtonStyle() ,
+          child:const  Text('github')),
     ],
   );
 }

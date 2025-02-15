@@ -9,18 +9,30 @@ Text textWhite(String data){
   );
 }
 
-Container containerForSkills(String name, String imageData, double fontSize){
-  return Container(
-    decoration: BoxDecoration(
-      borderRadius:BorderRadius.circular(25),
-    ),
-    child: Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Text(name,style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold,
-            color: Colors.black),),
-        Image.asset(imageData,height: 100,),
-      ],
+Material containerForSkills(String name, String imageData, double fontSize){
+  return Material(
+    elevation: 5.0,
+    color: Colors.grey.shade800,
+    shadowColor: Colors.white,
+    borderRadius: BorderRadius.circular(20),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius:BorderRadius.circular(25),
+        /*boxShadow: [
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(0, 2),
+          ),
+        ]*/
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(name,style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold,
+              color: Colors.white),),
+          Image.asset(imageData,height: 100,),
+        ],
+      ),
     ),
   );
 }
@@ -42,7 +54,7 @@ Container containerForContacts(IconData? iconData, VoidCallback launchUrl){
   );
 }
 
-Padding containerForProjects(String title,String subTitle,String image,double height){
+Padding containerForProjects(void Function() onTap,String title,String subTitle,String image,double height){
   return Padding(
     padding: const EdgeInsets.all(8.0),
     child: Container(
@@ -67,7 +79,10 @@ Padding containerForProjects(String title,String subTitle,String image,double he
             ),
             Expanded(
               child: ListTile(
-                title:textBlack(title),
+                title:GestureDetector(
+                    onTap:onTap,
+                    child: textBlack(title)
+                ),
                 subtitle: Text(subTitle,
                   style: const TextStyle(color:Colors.black),),
               ),

@@ -20,6 +20,7 @@ class GoogleIcon{
     'Github': MdiIcons.github, // GitHub icon from Material Design Icons
     'Instagram': MdiIcons.instagram, // Instagram icon
     'LinkedIn': MdiIcons.linkedin, // LinkedIn icon
+    //'Vercel':MdiIcons.triangle,
   };
   static IconData getIcon(String iconName){
     return icons[iconName] ?? Icons.error;

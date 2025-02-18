@@ -2,6 +2,7 @@ import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portfolio/constant/text_font.dart';
 import 'package:flutter_portfolio/utils/container.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import '../constant/google_icons.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -81,16 +82,17 @@ Container skillsContainer(GlobalKey key,double width,double fontSize) {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
+                    const SizedBox(width:8),
                     containerForSkills("Dart", "assets/skills-image/dart.png",fontSize),
-                    const SizedBox(width:7),
+                    const SizedBox(width:8),
                     containerForSkills(
                         "Flutter", "assets/skills-image/flutter.png",fontSize),
-                    const SizedBox(width:7),
+                    const SizedBox(width:8),
                     containerForSkills(
                         "Firebase", "assets/skills-image/firebase.png",fontSize),
-                    const SizedBox(width:7),
+                    const SizedBox(width:8),
                     containerForSkills("Bloc", "assets/skills-image/bloc.png",fontSize),
-                    const SizedBox(width:7),
+                    const SizedBox(width:8),
                     containerForSkills(
                         "Hive Storage", "assets/skills-image/hive.png",fontSize),
                   ],
@@ -152,11 +154,13 @@ Column mainColumn(GlobalKey key,void Function() onTap) {
         style: TextStyle(
             fontSize: 30, fontWeight: FontWeight.normal, color: Colors.yellow),
         ),
-      Text(
-        "Flutter App Developer ",
-        style: Abeezee.googleFont,
-      ).animate(onPlay: (controller) => controller.repeat(reverse: true))
-          .fadeOut(curve: Curves.easeInOut),
+      Center(
+        child: Text(
+          "Flutter App Developer ",
+          style: Abeezee.googleFont,
+        ).animate(onPlay: (controller) => controller.repeat(reverse: true))
+            .fadeOut(curve: Curves.easeInOut),
+      ),
       ElevatedButton(
         onPressed: () {},
         style: ElevatedButton.styleFrom(
@@ -176,25 +180,32 @@ Column mainColumn(GlobalKey key,void Function() onTap) {
           mainAxisAlignment: MainAxisAlignment.center, children: [
         Icon(
           PlatformIcon.icons['Android'],
-          size: 30,
+          size: 50,
         ),
         Icon(
           PlatformIcon.icons['IOS'],
-          size: 30,
+          size: 50,
         ),
         Icon(
           PlatformIcon.icons['Windows'],
-          size: 30,
+          size: 50,
         ),
         Icon(
           PlatformIcon.icons['Desktop'],
-          size: 30,
+          size: 50,
         ),
       ]),
+      const SizedBox(height: 10,),
+
       OutlinedButton(
           onPressed:onTap,
-          style:ButtonStyle() ,
-          child:const  Text('github')),
+          //style:ButtonStyle() ,
+          child:Row(
+            children: [
+              Icon(MdiIcons.github),
+              const Text('github',style: TextStyle(),),
+            ],
+          )),
     ],
   );
 }

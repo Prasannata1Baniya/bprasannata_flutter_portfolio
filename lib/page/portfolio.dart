@@ -125,8 +125,6 @@ class _PortfolioPageState extends State<PortfolioPage> {
                             scrollToSection(projectsKey);
                             break;
                           case 3:
-                            break;
-                          case 4:
                             scrollToSection(contactsKey);
                             break;
                         }
@@ -142,9 +140,10 @@ class _PortfolioPageState extends State<PortfolioPage> {
                     //For desktop
                     if(constraints.maxWidth>=minSize)
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           mainColumn(homeKey,()=>_launchUrl(githubUrl)),
+                          const SizedBox(width:240),
                           deviceFrame(),
                         ],
                       )

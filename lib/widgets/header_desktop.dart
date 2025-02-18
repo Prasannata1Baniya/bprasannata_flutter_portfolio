@@ -15,12 +15,12 @@ class HeaderDesktop extends StatelessWidget {
       height: 60,
       width:double.maxFinite,
       decoration: BoxDecoration(
-        color: Colors.deepOrange,
-        /*gradient: LinearGradient(
+        //color: Colors.deepOrange,
+        gradient: LinearGradient(
             colors: [
               Colors.transparent,
               CustomColor.bglight1,
-            ]),*/
+            ]),
         borderRadius: BorderRadius.circular(50),
       ),
       child: Row(

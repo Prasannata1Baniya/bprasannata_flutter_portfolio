@@ -156,18 +156,27 @@ class _PortfolioPageState extends State<PortfolioPage> {
                           mainColumn(homeKey,()=>_launchUrl(githubUrl)),
                         ],
                       ),
-                    const SizedBox(height: 12.0),
+                    const SizedBox(height: 10.0),
             
                     //Skills
-                    skillsContainer(skillsKey,
+                    isDesktop ? skillsContainerForDesktop(skillsKey,
+                        500, 350, 900, 30) :
+                        skillsContainerForMobile(skillsKey, 900, 20
+                        ),
+
+                    /*skillsContainer(skillsKey,
+                         isDesktop? 500:900,
+                         isDesktop? 350:600,
                          isDesktop ? 900 : 350,
-                      isDesktop ? 30 : 20,),
+                      isDesktop ? 30 : 20,
+                     // isDesktop?false:true,
+                    ),*/
 
                     //projects
                     if(constraints.maxWidth>=minSize)
-                      projectContainer(()=>projectUrl(flutterProjects),projectsKey,500,110)
+                      projectContainer(()=>projectUrl(flutterProjects),projectsKey,500,115)
                     else
-                      projectContainer(()=>projectUrl(projectsUrl),projectsKey,600,155),
+                      projectContainer(()=>projectUrl(projectsUrl),projectsKey,600,160),
             
                     //Contacts
                     Container(

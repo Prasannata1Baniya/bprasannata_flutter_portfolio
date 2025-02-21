@@ -36,11 +36,91 @@ Container deviceFrame() {
   );
 }
 
-Container skillsContainer(GlobalKey key,double width,double fontSize) {
+Container skillsContainerForMobile(GlobalKey key,double h,fontSize,){
   return Container(
     key:key,
     width: double.maxFinite,
-    height: 500,
+    height: h,
+    color: const Color(0xff141414),
+    child: Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text("Skills",style: Poppins.googleFontPoppin,),
+        const SizedBox(height: 20),
+        Column(
+          children: [
+            CircularPercentIndicator(
+              radius: 50,
+              lineWidth: 5,
+              percent: 0.8,
+              center: const Text("80%", style: TextStyle(color: Colors.white)),
+              progressColor: Colors.green,
+            ),
+            const SizedBox(height: 15,),
+            Wrap(
+              //spacing:8,
+              //runSpacing: 3,
+              children: [
+                const SizedBox(width:8),
+                skillsContainer("Dart", "assets/skills-image/dart.png",fontSize),
+                const SizedBox(width:8),
+                skillsContainer(
+                    "Flutter", "assets/skills-image/flutter.png",fontSize),
+                const SizedBox(width:8),
+                skillsContainer(
+                    "Firebase", "assets/skills-image/firebase.png",fontSize),
+                const SizedBox(width:8),
+                skillsContainer("Bloc", "assets/skills-image/bloc.png",fontSize),
+                const SizedBox(width:8),
+                skillsContainer(
+                    "Hive Storage", "assets/skills-image/hive.png",fontSize),
+                const SizedBox(width:8),
+                skillsContainer(
+                    "React Js", "assets/skills-image/react_js.png",fontSize),
+              ],
+            ),
+          ],
+        ),
+      ],
+    ),
+  );
+}
+
+Padding skillsContainer(String text, String imageData, fontSize){
+  return Padding(
+    padding: const EdgeInsets.all(5.0),
+    child: DecoratedBox(decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.black,
+        boxShadow: const [
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(2, 2),
+            blurRadius: 3,
+            spreadRadius: 2,
+          ),
+          BoxShadow(
+            color: Colors.white,
+            offset: Offset(-2, -2),
+          ),
+        ]
+    ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(text,style: TextStyle(fontSize: fontSize),),
+          Image.asset(imageData,height:100),
+        ],
+      ),
+    ),
+  );
+}
+
+Container skillsContainerForDesktop(GlobalKey key,double h,double height,double width,double fontSize) {
+  return Container(
+    key:key,
+    width: double.maxFinite,
+    height: h,
     color: const Color(0xff141414),
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -49,7 +129,7 @@ Container skillsContainer(GlobalKey key,double width,double fontSize) {
         const SizedBox(height: 30),
         Container(
           padding: const EdgeInsets.only(top: 30.0),
-          height: 350,
+          height: height,
           width: width,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
@@ -77,26 +157,30 @@ Container skillsContainer(GlobalKey key,double width,double fontSize) {
                 progressColor: Colors.green,
               ),
               const SizedBox(height: 15,),
-              SingleChildScrollView(
-                scrollDirection:Axis.horizontal,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    const SizedBox(width:8),
-                    containerForSkills("Dart", "assets/skills-image/dart.png",fontSize),
-                    const SizedBox(width:8),
-                    containerForSkills(
-                        "Flutter", "assets/skills-image/flutter.png",fontSize),
-                    const SizedBox(width:8),
-                    containerForSkills(
-                        "Firebase", "assets/skills-image/firebase.png",fontSize),
-                    const SizedBox(width:8),
-                    containerForSkills("Bloc", "assets/skills-image/bloc.png",fontSize),
-                    const SizedBox(width:8),
-                    containerForSkills(
-                        "Hive Storage", "assets/skills-image/hive.png",fontSize),
-                  ],
-                ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+              child: Wrap(
+                spacing: 8,
+                runSpacing: 5,
+                children: [
+                  const SizedBox(width:8),
+                  containerForSkills("Dart", "assets/skills-image/dart.png",fontSize),
+                  const SizedBox(width:8),
+                  containerForSkills(
+                      "Flutter", "assets/skills-image/flutter.png",fontSize),
+                  const SizedBox(width:8),
+                  containerForSkills(
+                      "Firebase", "assets/skills-image/firebase.png",fontSize),
+                  const SizedBox(width:8),
+                  containerForSkills("Bloc", "assets/skills-image/bloc.png",fontSize),
+                  const SizedBox(width:8),
+                  containerForSkills(
+                      "Hive Storage", "assets/skills-image/hive.png",fontSize),
+                  const SizedBox(width:8),
+                  containerForSkills(
+                      "React Js", "assets/skills-image/react_js.png",fontSize),
+                ],
+              ),
               ),
             ],
           ),
@@ -132,7 +216,7 @@ Container projectContainer(void Function() onTap,GlobalKey key,double ht,double 
           containerForProjects(
               onTap,
               "Advanced Projects",
-              "Advanced projects using flutter hive_storage, State Management System-Bloc, REST APIs, Firebase etc.",
+              "Advanced projects using flutter hive_storage,\n State Management System-Bloc,REST APIs, Firebase etc.",
               "assets/projects-image/advanced_project.png",height),
         ]),
   );
@@ -196,10 +280,9 @@ Column mainColumn(GlobalKey key,void Function() onTap) {
         ),
       ]),
       const SizedBox(height: 10,),
-
       OutlinedButton(
           onPressed:onTap,
-          //style:ButtonStyle() ,
+          style:const ButtonStyle() ,
           child:Row(
             children: [
               Icon(MdiIcons.github),
@@ -209,3 +292,4 @@ Column mainColumn(GlobalKey key,void Function() onTap) {
     ],
   );
 }
+

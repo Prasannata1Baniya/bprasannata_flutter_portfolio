@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 Text textBlack(String data){
-  return Text(data,style:const TextStyle(color:Colors.black,fontSize: 30,fontWeight: FontWeight.bold),
+  return Text(data,style:const TextStyle(color:Colors.black,fontSize: 36,fontWeight: FontWeight.bold),
   );
 }
 Text textWhite(String data){
-  return Text(data,style:const TextStyle(color:Colors.white,fontSize: 30,fontWeight: FontWeight.bold),
+  return Text(data,style:const TextStyle(color:Colors.white,fontSize: 33,fontWeight: FontWeight.bold),
   );
 }
 

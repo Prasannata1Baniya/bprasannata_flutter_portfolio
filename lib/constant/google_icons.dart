@@ -17,9 +17,9 @@ class PlatformIcon{
 //For Contacts
 class GoogleIcon{
   static Map<String,IconData> icons={
-    'Github': MdiIcons.github, // GitHub icon from Material Design Icons
-    'Instagram': MdiIcons.instagram, // Instagram icon
-    'LinkedIn': MdiIcons.linkedin, // LinkedIn icon
+    'Github': MdiIcons.github,
+    'Instagram': MdiIcons.instagram,
+    'LinkedIn': MdiIcons.linkedin,
     //'Vercel':MdiIcons.triangle,
   };
   static IconData getIcon(String iconName){

@@ -21,6 +21,7 @@ class GoogleIcon{
     'Instagram': MdiIcons.instagram,
     'LinkedIn': MdiIcons.linkedin,
     //'Vercel':MdiIcons.triangle,
+
   };
   static IconData getIcon(String iconName){
     return icons[iconName] ?? Icons.error;

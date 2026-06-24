@@ -1,5 +1,6 @@
 import 'package:device_frame/device_frame.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_portfolio/animation/hover_animate.dart';
 import 'package:flutter_portfolio/constant/text_font.dart';
 import 'package:flutter_portfolio/constant/colors.dart';
 import 'package:flutter_portfolio/utils/container.dart';
@@ -378,11 +379,13 @@ Container projectContainer({
         ),
         const SizedBox(height: 32),
 
-        ...projects.map((project) => containerForProjects(
-          onTap: () => onProjectTap(project.projectUrl),
-          title: project.title,
-          subTitle: project.subTitle,
-          image: project.image,
+        ...projects.map((project) => HoverProjectCard(
+          child: containerForProjects(
+            onTap: () => onProjectTap(project.projectUrl),
+            title: project.title,
+            subTitle: project.subTitle,
+            image: project.image,
+          ),
         )),
       ],
     ),

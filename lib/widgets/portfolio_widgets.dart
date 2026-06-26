@@ -27,13 +27,17 @@ class ProjectData {
   static final List<ProjectModel> myProjects = [
     ProjectModel(
       title: "Meeting app",
-      subTitle: "Basics Project to enhance my dart and flutter knowledge.\nSimple games, simple demo apps, other small projects are included.",
+      subTitle: "This Meeting app supports real-time collaborative workspace"
+          " tools (synchronized notes, action-item tasks, and live group chat backed by Hive caching)"
+          " alongside a peer-to-peer WebRTC video/audio streaming pipeline."
+          "\nNode JS, Express, Socket, MongoDB",
       image: "assets/projects-image/meeting_app.png",
       projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/meeting_app'),
     ),
     ProjectModel(
       title: "Flutter chat app",
-      subTitle: "Basics Project to enhance my dart and flutter knowledge.\nSimple games, simple demo apps, other small projects are included.",
+      subTitle: "Flutter chat app to enhance my frontend and backend knowledge."
+          "\nFlutter, Firebase, firestore,Real time messaging ",
       image: "assets/projects-image/flutter_chat_app.png",
       projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/flutter_chat_app'),
     ),
@@ -58,9 +62,7 @@ class ProjectData {
   ];
 }
 
-// ==========================================
-// 📱 HERO / DEVICE FRAME
-// ==========================================
+// DEVICE FRAME
 
 Container deviceFrame() {
   return Container(

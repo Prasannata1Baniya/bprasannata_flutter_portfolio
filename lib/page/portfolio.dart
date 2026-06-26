@@ -28,7 +28,7 @@ class _PortfolioPageState extends State<PortfolioPage> {
 
   // Profile Links
   final Uri _githubUrl = Uri.parse('https://github.com/Prasannata1Baniya');
-  final Uri _instaUrl = Uri.parse('');
+  final Uri _instaUrl = Uri.parse('https://www.instagram.com/prasannata1/');
   final Uri _linkedInUrl = Uri.parse('https://www.linkedin.com/in/prasannata-baniya-060b792bb');
 
 

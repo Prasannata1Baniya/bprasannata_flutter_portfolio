@@ -42,8 +42,23 @@ class ProjectData {
       projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/flutter_chat_app'),
     ),
     ProjectModel(
+      title: "Cab Booking app",
+      subTitle: "Developed a Cab Booking Mobile App using Firebase and Cloudinary for Cloud Storage."
+          "\nFlutter_Map, Firebase, firestore, Cloudinary ",
+      image: "assets/projects-image/cab_booking_project.png",
+      projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/Sajilo-Ride'),
+    ),
+    ProjectModel(
+      title: "Car Rental Web and Mobile app",
+      subTitle: "Developed a Car Rental Web and Mobile App using Firebase."
+          "\nFlutterMap, Firebase, firestore",
+      image: "assets/projects-image/cab_booking_project.png",
+      projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/CarRentalApp'),
+    ),
+    ProjectModel(
       title: "Basics Projects",
-      subTitle: "Basics Project to enhance my dart and flutter knowledge.\nSimple games, simple demo apps, other small projects are included.",
+      subTitle: "Basics Project to enhance my dart and flutter knowledge."
+          "\nSimple games, simple demo apps, other small projects are included.",
       image: "assets/projects-image/basics_project.png",
       projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/flutter_projects'),
     ),

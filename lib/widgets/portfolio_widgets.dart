@@ -183,7 +183,7 @@ Column mainColumn(GlobalKey key, void Function() onTap) {
           onPressed: () async {
             final Uri emailLaunchUri = Uri(
               scheme: 'mailto',
-              path: 'bprasannata55@gmail.com',
+              path: 'prasannata8890@gmail.com',
               query: encodeQueryParameters(<String, String>{
                 'subject': 'Hello from your portfolio',
               }),

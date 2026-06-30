@@ -5,6 +5,7 @@ import 'package:flutter_portfolio/constant/text_font.dart';
 import 'package:flutter_portfolio/constant/colors.dart';
 import 'package:flutter_portfolio/utils/container.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../constant/google_icons.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -35,7 +36,7 @@ class ProjectData {
       projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/meeting_app'),
     ),
     ProjectModel(
-      title: "Flutter chat app",
+      title: "Flutter RealTime Chat App",
       subTitle: "Flutter chat app to enhance my frontend and backend knowledge."
           "\nFlutter, Firebase, firestore,Real time messaging ",
       image: "assets/projects-image/flutter_chat_app.png",
@@ -52,7 +53,7 @@ class ProjectData {
       title: "Car Rental Web and Mobile app",
       subTitle: "Developed a Car Rental Web and Mobile App using Firebase."
           "\nFlutterMap, Firebase, firestore",
-      image: "assets/projects-image/cab_booking_project.png",
+      image: "assets/projects-image/car_rental_project.png",
       projectUrl: Uri.parse('https://github.com/Prasannata1Baniya/CarRentalApp'),
     ),
     ProjectModel(
@@ -179,7 +180,21 @@ Column mainColumn(GlobalKey key, void Function() onTap) {
             ]
         ),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () async {
+            final Uri emailLaunchUri = Uri(
+              scheme: 'mailto',
+              path: 'bprasannata55@gmail.com',
+              query: encodeQueryParameters(<String, String>{
+                'subject': 'Hello from your portfolio',
+              }),
+            );
+
+            if (await canLaunchUrl(emailLaunchUri)) {
+              await launchUrl(emailLaunchUri);
+            } else {
+              throw 'Could not launch $emailLaunchUri';
+            }
+          },
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.transparent,
             shadowColor: Colors.transparent,
@@ -220,6 +235,13 @@ Column mainColumn(GlobalKey key, void Function() onTap) {
       ),
     ],
   );
+}
+
+String? encodeQueryParameters(Map<String, String> params) {
+  return params.entries
+      .map((MapEntry<String, String> e) =>
+  '${Uri.encodeComponent(e.key)}=${Uri.encodeComponent(e.value)}')
+      .join('&');
 }
 
 Container skillsContainerForMobile(GlobalKey key, double fontSize) {

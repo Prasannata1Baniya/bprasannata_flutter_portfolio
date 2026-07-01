@@ -262,31 +262,50 @@ Container skillsContainerForMobile(GlobalKey key, double fontSize) {
             color: AppColors.accentNeon,
           ),
         ),
-        const SizedBox(height: 24),
-        CircularPercentIndicator(
-          radius: 45,
-          lineWidth: 6,
-          percent: 0.8,
-          center: const Text("80%", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
-          progressColor: AppColors.accentNeon,
-          backgroundColor: Colors.white10,
+        const SizedBox(height: 30),
+        const Text("Mobile Core", style: TextStyle(color: Colors.cyan)),
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 16, runSpacing: 16, alignment: WrapAlignment.center,
+          children: [
+            skillsContainer("Dart", "assets/skills-image/dart.png", fontSize),
+            skillsContainer("Flutter", "assets/skills-image/flutter.png", fontSize),
+            skillsContainer("Firebase", "assets/skills-image/firebase.png", fontSize),
+            skillsContainer("Bloc", "assets/skills-image/bloc.png", fontSize),
+          ],
         ),
-        const SizedBox(height: 32),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          child: Wrap(
-            spacing: 16,
-            runSpacing: 16,
-            alignment: WrapAlignment.center,
-            children: [
-              skillsContainer("Dart", "assets/skills-image/dart.png", fontSize),
-              skillsContainer("Flutter", "assets/skills-image/flutter.png", fontSize),
-              skillsContainer("Firebase", "assets/skills-image/firebase.png", fontSize),
-              skillsContainer("Bloc", "assets/skills-image/bloc.png", fontSize),
-              skillsContainer("Hive Storage", "assets/skills-image/hive.png", fontSize),
-              skillsContainer("React Js", "assets/skills-image/react_js.png", fontSize),
-            ],
-          ),
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 40.0),
+          child: Divider(color: Colors.white12, thickness: 1),
+        ),
+
+        // --- LOCAL STORAGE & TOOLS ---
+        const Text("Local Storage & Tools", style: TextStyle(color: Colors.cyan)),
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 16, runSpacing: 16, alignment: WrapAlignment.center,
+          children: [
+            skillsContainer("Hive Storage", "assets/skills-image/hive.png", fontSize),
+            skillsContainer("GitHub", "assets/skills-image/github.png", fontSize),
+          ],
+        ),
+
+        const Padding(
+          padding: EdgeInsets.symmetric(vertical: 24.0, horizontal: 40.0),
+          child: Divider(color: Colors.white12, thickness: 1),
+        ),
+
+        //BACKEND & WEB
+        const Text("Backend & Web", style: TextStyle(color: Colors.cyan)),
+        const SizedBox(height: 16),
+        Wrap(
+          spacing: 16, runSpacing: 16, alignment: WrapAlignment.center,
+          children: [
+            skillsContainer("Html & CSS", "assets/skills-image/html_css.png", fontSize),
+            skillsContainer("React Js", "assets/skills-image/react_js.png", fontSize),
+            skillsContainer("Node JS", "assets/skills-image/node_js.png", fontSize),
+            skillsContainer("MongoDB", "assets/skills-image/mongo_db.png", fontSize),
+          ],
         ),
       ],
     ),
@@ -337,7 +356,80 @@ Container skillsContainerForDesktop(GlobalKey key, double h, double height, doub
   return Container(
     key: key,
     width: double.maxFinite,
-    height: h,
+    padding: const EdgeInsets.symmetric(vertical: 40),
+    color: AppColors.scaffoldBg,
+    child: Column(
+      children: [
+        Text("SKILLS", style: Poppins.googleFontPoppin.copyWith(
+          fontWeight: FontWeight.bold,
+          letterSpacing: 2,
+          color: AppColors.accentNeon,
+        ),),
+        const SizedBox(height: 30),
+        Container(
+          padding: const EdgeInsets.all(24.0),
+          constraints: BoxConstraints(maxWidth: width),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(28),
+            color: const Color(0xff0F0F12),
+            border: Border.all(color: Colors.white.withValues(alpha: 0.03)),
+          ),
+          child: Column(
+            children: [
+              // --- CORE MOBILE SKILLS ---
+              Text("Mobile Core", style: TextStyle(color: AppColors.accentNeon.withValues(alpha: 0.7),
+                  fontWeight: FontWeight.bold)),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 16, runSpacing: 16, alignment: WrapAlignment.center,
+                children: [
+                  skillsContainer("Dart", "assets/skills-image/dart.png", fontSize),
+                  skillsContainer("Flutter", "assets/skills-image/flutter.png", fontSize),
+                  skillsContainer("Firebase", "assets/skills-image/firebase.png", fontSize),
+                  skillsContainer("Bloc", "assets/skills-image/bloc.png", fontSize),
+                ],
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 20), child: Divider(color: Colors.white10)),
+
+              //Local Storage & Tools
+              Text("Local Storage & Tools", style: TextStyle(color: AppColors.accentNeon.withValues(alpha: 0.7),
+                  fontWeight: FontWeight.bold)),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 16, runSpacing: 16, alignment: WrapAlignment.center,
+                children: [
+                  skillsContainer("Hive Storage", "assets/skills-image/hive.png", fontSize),
+                  skillsContainer("GitHub", "assets/skills-image/github.png", fontSize),
+                ],
+              ),
+              const Padding(padding: EdgeInsets.symmetric(vertical: 20), child: Divider(color: Colors.white10)),
+
+              //BACKEND & WEB SKILLS
+              Text("Backend & Web", style: TextStyle(color: AppColors.accentNeon.withValues(alpha: 0.7),
+                  fontWeight: FontWeight.bold)),
+              const SizedBox(height: 16),
+              Wrap(
+                spacing: 16, runSpacing: 16, alignment: WrapAlignment.center,
+                children: [
+                  skillsContainer("Html & CSS", "assets/skills-image/html_css.png", fontSize),
+                  skillsContainer("React Js", "assets/skills-image/react_js.png", fontSize),
+                  skillsContainer("Node JS", "assets/skills-image/node_js.png", fontSize),
+                  skillsContainer("Mongo DB Atlas", "assets/skills-image/mongo_db.png", fontSize),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+/*Container skillsContainerForDesktop(GlobalKey key, double h, double height, double width, double fontSize) {
+  return Container(
+    key: key,
+    width: double.maxFinite,
+    padding: const EdgeInsets.symmetric(vertical: 40),
     color: AppColors.scaffoldBg,
     child: Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -353,14 +445,14 @@ Container skillsContainerForDesktop(GlobalKey key, double h, double height, doub
         const SizedBox(height: 30),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 32.0, horizontal: 24.0),
-          height: height,
-          width: width,
+          constraints: BoxConstraints(maxWidth: width),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(28),
             color: const Color(0xff0F0F12),
             border: Border.all(color: Colors.white.withValues(alpha: 0.03)),
           ),
           child: Column(
+            mainAxisSize: MainAxisSize.min,
             children: [
               CircularPercentIndicator(
                 radius: 45,
@@ -371,20 +463,22 @@ Container skillsContainerForDesktop(GlobalKey key, double h, double height, doub
                 backgroundColor: Colors.white10,
               ),
               const SizedBox(height: 28),
-              Expanded(
-                child: Wrap(
-                  spacing: 16,
-                  runSpacing: 16,
-                  alignment: WrapAlignment.center,
-                  children: [
-                    skillsForContainer("Dart", "assets/skills-image/dart.png", fontSize),
-                    skillsForContainer("Flutter", "assets/skills-image/flutter.png", fontSize),
-                    skillsForContainer("Firebase", "assets/skills-image/firebase.png", fontSize),
-                    skillsForContainer("Bloc", "assets/skills-image/bloc.png", fontSize),
-                    skillsForContainer("Hive Storage", "assets/skills-image/hive.png", fontSize),
-                    skillsForContainer("React Js", "assets/skills-image/react_js.png", fontSize),
-                  ],
-                ),
+              Wrap(
+                spacing: 16,
+                runSpacing: 16,
+                alignment: WrapAlignment.center,
+                children: [
+                  skillsContainer("Dart", "assets/skills-image/dart.png", fontSize),
+                  skillsContainer("Flutter", "assets/skills-image/flutter.png", fontSize),
+                  skillsContainer("Firebase", "assets/skills-image/firebase.png", fontSize),
+                  skillsContainer("Bloc", "assets/skills-image/bloc.png", fontSize),
+                  skillsContainer("Hive Storage", "assets/skills-image/hive.png", fontSize),
+                  skillsContainer("React Js", "assets/skills-image/react_js.png", fontSize),
+                  skillsContainer("Node JS", "assets/skills-image/node_js.png", fontSize),
+                  skillsContainer("Mongo DB Atlas", "assets/skills-image/mongo_db.png", fontSize),
+                  skillsContainer("GitHub", "assets/skills-image/github.png", fontSize),
+
+                ],
               ),
             ],
           ),
@@ -392,7 +486,7 @@ Container skillsContainerForDesktop(GlobalKey key, double h, double height, doub
       ],
     ),
   );
-}
+}*/
 
 Container projectContainer({
   required GlobalKey key,
